@@ -263,9 +263,9 @@ export default function Home() {
                 className="relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                <p className="text-black dark:text-white/70 text-center relative">
+                <p className="text-foreground/70 text-center relative">
                   Created by{" "}
-                  <span className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 group-hover:text-white transition-colors duration-300">
+                  <span className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
                     Shahtab Mohtasin
                   </span>
                 </p>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { GitHubButton } from "./GitHubButton";
 
 export function Navbar() {
   const { theme } = useTheme();
@@ -30,9 +31,7 @@ export function Navbar() {
             <Link href="/about" className="text-sm font-medium hover:text-red-500 transition-colors">
               About
             </Link>
-            <Link href="/teams" className="text-sm font-medium hover:text-red-500 transition-colors">
-              Teams
-            </Link>
+            <GitHubButton />
             <div className="p-1 rounded-md bg-white/5 border border-black transition-all duration-300">
               <ThemeToggle />
             </div>
@@ -62,14 +61,7 @@ export function Navbar() {
           >
             About
           </Link>
-          <Link 
-            href="/teams" 
-            className={`text-sm font-medium ${
-              theme === 'dark' ? 'text-white hover:text-red-400' : 'text-black hover:text-red-500'
-            } transition-colors`}
-          >
-            Teams
-          </Link>
+          <GitHubButton />
           <div className="p-1 rounded-md bg-white/5 dark:bg-black/5 border border-black dark:border-white hover:border-black dark:hover:border-white transition-all duration-300">
             <ThemeToggle />
           </div>
