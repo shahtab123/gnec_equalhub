@@ -122,7 +122,7 @@ export default function Home() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 0.4 }}
-                  className="mt-8 max-w-4xl mx-auto relative group"
+                  className="mt-4 max-w-4xl mx-auto relative group"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500" />
                   <div className="relative bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-red-500/40 dark:border-white/10">
@@ -151,9 +151,9 @@ export default function Home() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.8 }}
-                  className="absolute bottom-4 left-1/2 -translate-x-1/2"
+                  className="absolute bottom-28 left-1/2 -translate-x-1/2"
                 >
-                  <div className="w-1 h-4 bg-red-500 dark:bg-white rounded-full"></div>
+                  <div className="w-1 h-10 bg-red-500 dark:bg-white rounded-full"></div>
                 </motion.div>
               </div>
             </div>
@@ -263,7 +263,7 @@ export default function Home() {
                 className="relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                <p className="text-white/70 text-center relative">
+                <p className="text-black dark:text-white/70 text-center relative">
                   Created by{" "}
                   <span className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 group-hover:text-white transition-colors duration-300">
                     Shahtab Mohtasin
