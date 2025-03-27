@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EqualHub
 
-## Getting Started
+A comprehensive platform developed for the GNEC Hackathon, focusing on SDG 5 (Gender Equality) and SDG 10 (Reduced Inequalities) through interactive learning and community engagement.
 
-First, run the development server:
+## Overview
 
+EqualHub serves as a bridge between technology and social impact, offering innovative solutions for promoting equality and inclusion. Through our four distinct modes, we provide comprehensive tools and resources aligned with UN Sustainable Development Goals 5 and 10, empowering users to learn, engage, and make a real difference in their communities.
+
+### Key Features
+
+- **Quest Mode**: Test your knowledge through an engaging five-part challenge
+  - Knowledge Check MCQs
+  - Scenario Analysis
+  - Interactive Fact Matching
+  - Personal Action Pledges
+  - Micro-Advocacy Challenges
+
+- **Play Mode**: Interactive mini-games and ice-breaking activities
+  - Path to Parity Game
+  - Balance Scales Simulation
+  - Inclusion Icebreakers
+  - Collaborative Challenges
+
+- **Skill Mode**: Comprehensive learning resources
+  - Structured Video Courses
+  - Interactive Workshops
+  - Resource Library
+  - Mentorship Platform
+
+- **Impact Mode**: Assessment and analytics tools
+  - Inclusivity Assessment
+  - Policy Analysis
+  - Culture Survey
+  - Interactive Dashboards
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/equalhub.git
+cd equalhub
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Create a `.env.local` file in the root directory and add necessary environment variables:
+```env
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+## Running the Application
+
+### Development Mode
 ```bash
 npm run dev
 # or
 yarn dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Production Build
+```bash
+# Build the application
+npm run build
 # or
-pnpm dev
+yarn build
+
+# Start the production server
+npm run start
 # or
-bun dev
+yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide Icons
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Future Plans
 
-## Learn More
+- Administrative Features
+  - Basic dashboard for content management
+  - Analytics tracking
+  - Resource upload system
+  - User management
 
-To learn more about Next.js, take a look at the following resources:
+- Platform Improvements
+  - Mobile-responsive design enhancements
+  - Accessibility improvements
+  - Multi-language support
+  - Progress tracking system
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Developer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Shahtab Mohtasin**
+- Lead Developer
+- [LinkedIn](https://www.linkedin.com/in/shahtab-mohtasin/)
+- [DevPost](https://devpost.com/smohtasin)
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

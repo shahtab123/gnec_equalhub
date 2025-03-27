@@ -42,7 +42,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <p className="text-foreground/80">
-                  EqualHub was created as part of the GNEC Hackathon, connecting with GNEC's global network of 1,600 subsidiaries. Our platform serves as a bridge between technology and social impact, offering innovative solutions for promoting equality and inclusion.
+                  EqualHub was created as part of the GNEC Hackathon. Our platform serves as a bridge between technology and social impact, offering innovative solutions for promoting equality and inclusion.
                 </p>
                 <p className="text-foreground/80">
                   Through our four distinct modes, we provide comprehensive tools and resources aligned with UN Sustainable Development Goals 5 and 10, empowering users to learn, engage, and make a real difference in their communities.
@@ -52,19 +52,15 @@ export default function AboutPage() {
                 <h3 className="text-lg font-semibold text-foreground mb-4">Why EqualHub?</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3">
-                    <Globe className="w-5 h-5 text-red-400" />
-                    <span className="text-foreground/80">Connected to GNEC's global NGO network</span>
+                    <Target className="w-5 h-5 text-red-400" />
+                    <span className="text-foreground/80">Focus on SDG 5 and SDG 10</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Users className="w-5 h-5 text-orange-400" />
                     <span className="text-foreground/80">Community-driven learning and impact</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <Target className="w-5 h-5 text-red-400" />
-                    <span className="text-foreground/80">Focus on SDG 5 and SDG 10</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Award className="w-5 h-5 text-orange-400" />
+                    <Award className="w-5 h-5 text-red-400" />
                     <span className="text-foreground/80">Interactive and engaging approach</span>
                   </li>
                 </ul>
@@ -395,16 +391,9 @@ export default function AboutPage() {
             <h2 className="text-2xl font-semibold text-foreground mb-6">GNEC Hackathon Connection</h2>
             <div className="space-y-4">
               <p className="text-foreground/80">
-                EqualHub was developed as part of the fourth GNEC Hackathon, focusing specifically on UN SDGs 5 and 10. The platform leverages GNEC's connection to the UN and its global network of NGOs to create meaningful impact in gender equality and reduced inequalities.
-              </p>
-              <p className="text-foreground/80">
-                Our platform demonstrates how technology can be used to address social challenges while providing educational resources and practical tools for organizations and individuals committed to creating a more equitable world.
+                EqualHub was developed as part of the fourth GNEC Hackathon, focusing specifically on UN SDGs 5 and 10. The platform demonstrates how technology can be used to address social challenges while providing educational resources and practical tools for organizations and individuals committed to creating a more equitable world.
               </p>
               <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-xl p-4 border border-red-500/20">
-                  <h4 className="font-semibold text-foreground mb-2">Global Network</h4>
-                  <p className="text-sm text-foreground/80">Connected to GNEC's 1,600 subsidiaries worldwide</p>
-                </div>
                 <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl p-4 border border-orange-500/20">
                   <h4 className="font-semibold text-foreground mb-2">UN Alignment</h4>
                   <p className="text-sm text-foreground/80">Direct focus on UN SDGs 5 and 10</p>
@@ -412,6 +401,10 @@ export default function AboutPage() {
                 <div className="bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-xl p-4 border border-red-500/20">
                   <h4 className="font-semibold text-foreground mb-2">Tech Innovation</h4>
                   <p className="text-sm text-foreground/80">Combining technology with social impact</p>
+                </div>
+                <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl p-4 border border-orange-500/20">
+                  <h4 className="font-semibold text-foreground mb-2">Educational Platform</h4>
+                  <p className="text-sm text-foreground/80">Interactive learning and engagement</p>
                 </div>
               </div>
             </div>
