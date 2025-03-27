@@ -6,10 +6,11 @@ import { Clock, BookOpen, X, Download, Coffee, Linkedin, Video, FileText, CheckC
 import { useRouter } from "next/navigation";
 import { samplePosts, Chapter, SkillPost } from "./data";
 
+type SearchParams = { id: string };
+
 interface CourseProps {
-  searchParams: {
-    id: string;
-  };
+  params: {};
+  searchParams: SearchParams;
 }
 
 export default function CoursePage({ searchParams }: CourseProps) {
