@@ -84,20 +84,28 @@ export default function Home() {
       {/* All content */}
       <div ref={ref} className="relative">
         {/* Hero Section */}
-        <section className="relative h-[85vh]">
+        <section className="relative h-[80vh]">
           {/* Background Glow Effects */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-red-500/30 rounded-full blur-3xl opacity-50 animate-pulse" />
             <div className="absolute top-1/4 right-1/4 w-[30rem] h-[30rem] bg-orange-500/20 rounded-full blur-3xl opacity-30 animate-pulse delay-1000" />
+            {/* Animated Blob */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="relative w-[35rem] h-[35rem] animate-blob">
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-rose-500/10 to-pink-300/10 rounded-blob blur-2xl transform-gpu"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 via-pink-300/10 to-pink-500/10 rounded-blob blur-2xl transform-gpu animate-blob-spin"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-300/10 via-pink-500/10 to-rose-500/10 rounded-blob blur-2xl transform-gpu animate-blob-spin-reverse"></div>
+              </div>
+            </div>
           </div>
 
           {/* Main Content */}
-          <div className="relative pt-12 px-4 h-full">
+          <div className="relative pt-8 px-4 h-full">
             <div className="max-w-7xl mx-auto h-full">
               {/* Title Section */}
               <div className="flex flex-col items-center justify-center h-full relative">
-                <motion.div style={{ y, opacity }}>
-                  <div className="relative -mt-20">
+                <motion.div style={{ y, opacity }} className="-mt-20">
+                  <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-orange-500/20 blur-3xl" />
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-center relative">
                       <span className="text-foreground">Equal</span>
@@ -157,7 +165,7 @@ export default function Home() {
                 </motion.div>
               </div>
             </div>
-        </div>
+          </div>
         </section>
 
         {/* Modes Section */}
@@ -272,8 +280,8 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
     </main>
   );
 }

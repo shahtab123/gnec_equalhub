@@ -34,13 +34,13 @@ export const GitHubButton: React.FC = () => {
         rel="noopener noreferrer"
         className='relative inline-block sm:w-28 w-10 h-[2.2em] mx-auto group dark:bg-black bg-white rounded-lg'
       >
-        <div className='absolute w-[112.81%] h-[128.57%] top-[8.57%] left-1/2 -translate-x-1/2 filter blur-[10px] opacity-50'>
+        <div className='absolute w-[105%] h-[115%] top-[8%] left-1/2 -translate-x-1/2 filter blur-[10px] opacity-50'>
           <span className='absolute inset-0 rounded-lg bg-[#d9d9d9] filter blur-[3px]'></span>
           <div className='relative w-full h-full overflow-hidden rounded-lg'>
             <Liquid isHovered={isHovered} colors={COLORS} />
           </div>
         </div>
-        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-[92.23%] h-[112.85%] rounded-lg bg-[#010128] filter blur-[4px]'></div>
+        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-[85%] h-[105%] rounded-lg bg-[#010128] filter blur-[4px]'></div>
         <div className='relative w-full h-full overflow-hidden rounded-lg'>
           <span className='absolute inset-0 rounded-lg bg-[#d9d9d9]'></span>
           <span className='absolute inset-0 rounded-lg bg-black'></span>
@@ -53,7 +53,7 @@ export const GitHubButton: React.FC = () => {
               }`}
             ></span>
           ))}
-          <span className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-[70.8%] h-[42.85%] rounded-lg filter blur-[8px] bg-[#006]'></span>
+          <span className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-[65%] h-[40%] rounded-lg filter blur-[8px] bg-[#006]'></span>
         </div>
         <button
           className='absolute inset-0 rounded-lg bg-transparent cursor-pointer'

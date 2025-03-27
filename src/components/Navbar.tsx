@@ -28,7 +28,7 @@ export function Navbar() {
             </h1>
           </Link>
           <div className="flex items-center gap-4">
-            <Link href="/about" className="text-sm font-medium hover:text-red-500 transition-colors">
+            <Link href="/about" className="text-sm font-bold hover:text-red-500 transition-colors">
               About
             </Link>
             <GitHubButton />
@@ -55,7 +55,7 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           <Link 
             href="/about" 
-            className={`text-sm font-medium ${
+            className={`text-sm font-bold ${
               theme === 'dark' ? 'text-white hover:text-red-400' : 'text-black hover:text-red-500'
             } transition-colors`}
           >
