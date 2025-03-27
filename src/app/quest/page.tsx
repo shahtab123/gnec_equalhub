@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GridBackground } from "@/components/ui/grid-background";
-import { CheckCircle, XCircle, ArrowRight, Sun, Moon } from "lucide-react";
+import { CheckCircle, XCircle, ArrowRight } from "lucide-react";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { Navbar } from "@/components/Navbar";
 import html2canvas from 'html2canvas';
@@ -1050,44 +1050,4 @@ export default function QuestPage() {
       </div>
     </main>
   );
-}
-
-// Helper functions to parse quiz data
-function parseMCQData(data: string) {
-  const questions = data.split("\n\n").filter(q => q.trim());
-  return questions.map(q => {
-    const lines = q.split("\n");
-    const question = lines[0];
-    const options = lines.slice(1, 5);
-    const answer = lines[5].split(": ")[1];
-    return { question, options, answer };
-  });
-}
-
-function parseTFData(data: string) {
-  const questions = data.split("\n\n").filter(q => q.trim());
-  return questions.map(q => {
-    const lines = q.split("\n");
-    const question = lines[0].split(": ")[1];
-    const answer = lines[1].split("– ")[1].toLowerCase() === "true";
-    return { question, answer };
-  });
-}
-
-function parsePledgeData(data: string) {
-  const tasks = data.split("\n\n").filter(t => t.trim());
-  return tasks.map(t => {
-    const lines = t.split("\n");
-    const task = lines[0];
-    return { task };
-  });
-}
-
-function parseMicroAdvocacyData(data: string) {
-  const tasks = data.split("\n\n").filter(t => t.trim());
-  return tasks.map(t => {
-    const lines = t.split("\n");
-    const task = lines[0];
-    return { task };
-  });
 } 

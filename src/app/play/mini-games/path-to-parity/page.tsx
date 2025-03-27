@@ -35,7 +35,6 @@ export default function PathToParityPage() {
   const [gameCompleted, setGameCompleted] = useState(false);
   const [barriersCleared, setBarriersCleared] = useState(0);
   const [feedback, setFeedback] = useState("");
-  const [showInstructions, setShowInstructions] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [selectedQuestions, setSelectedQuestions] = useState<typeof parityQuestions>([]);
   const [attempts, setAttempts] = useState(0);
@@ -56,7 +55,6 @@ export default function PathToParityPage() {
   const startGame = () => {
     if (playerName.trim()) {
       setGameStarted(true);
-      setShowInstructions(false);
     }
   };
 
@@ -120,7 +118,6 @@ export default function PathToParityPage() {
     setGameCompleted(false);
     setGameStarted(false);
     setPlayerName("");
-    setShowInstructions(true);
     setIsTransitioning(false);
     setAttempts(0);
     setQuestionScores([]);

@@ -16,7 +16,6 @@ export function Scale({ value, size = "md" }: ScaleProps) {
   
   // Calculate vertical offset for pans based on rotation
   const leftPanOffset = Math.sin((rotation * Math.PI) / 180) * 40;  // Convert to radians and multiply by distance
-  const rightPanOffset = -leftPanOffset;  // Opposite movement
 
   // Size classes
   const sizeClasses = {

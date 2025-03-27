@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, BookOpen, X, Download, Coffee, Linkedin, Video, FileText, CheckCircle, AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { samplePosts, Chapter, SkillPost, CourseContent } from "./data";
+import { samplePosts, Chapter, SkillPost } from "./data";
 
 interface CourseProps {
   searchParams: {

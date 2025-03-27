@@ -295,7 +295,7 @@ export default function AboutPage() {
                   </div>
 
                   <p className="text-foreground/80">
-                    Our platform leverages GNEC's global network to provide access to world-class expertise and resources. Earn certifications, build your professional network, and develop the skills needed to become an effective advocate for equality and inclusion.
+                    Our platform leverages GNEC&apos;s global network to provide access to world-class expertise and resources. Earn certifications, build your professional network, and develop the skills needed to become an effective advocate for equality and inclusion.
                   </p>
                 </div>
               </motion.div>
