@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GridBackground } from "@/components/ui/grid-background";
 import { Navbar } from "@/components/Navbar";
-import { MessageCircle, Youtube, BookOpen, Users, AlertCircle, X, Download, Mail, Briefcase, Video, FileText, CheckCircle, Clock, Coffee, Linkedin, ExternalLink } from "lucide-react";
+import { Youtube, BookOpen, Users, AlertCircle, X, Download, Mail, Briefcase, Video, FileText, CheckCircle, Clock, Coffee, Linkedin, ExternalLink } from "lucide-react";
 
 // Types
 interface SkillPost {

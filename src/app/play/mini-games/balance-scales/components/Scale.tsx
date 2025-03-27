@@ -13,9 +13,6 @@ export function Scale({ value, size = "md" }: ScaleProps) {
   // Value 0 = -30 degrees (max tilt left)
   // Value 10 = 30 degrees (max tilt right)
   const rotation = ((value - 5) / 5) * 30;
-  
-  // Calculate vertical offset for pans based on rotation
-  const leftPanOffset = Math.sin((rotation * Math.PI) / 180) * 40;  // Convert to radians and multiply by distance
 
   // Size classes
   const sizeClasses = {

@@ -157,7 +157,7 @@ export default function AboutPage() {
                 </div>
                 <div className="space-y-4">
                   <p className="text-foreground/80">
-                    Transform learning about equality and inclusion into an engaging, interactive experience through our Play Mode. We've crafted a suite of educational games and team activities that make complex concepts accessible and memorable while fostering meaningful discussions and insights.
+                    Transform learning about equality and inclusion into an engaging, interactive experience through our Play Mode. We&apos;ve crafted a suite of educational games and team activities that make complex concepts accessible and memorable while fostering meaningful discussions and insights.
                   </p>
 
                   <div className="space-y-3">
@@ -313,7 +313,7 @@ export default function AboutPage() {
                 </div>
                 <div className="space-y-4">
                   <p className="text-foreground/80">
-                    Transform your organization's approach to equality and inclusion through our powerful Impact Mode. This comprehensive assessment and analytics platform helps you measure, understand, and enhance your organization's inclusivity metrics while providing actionable insights for improvement.
+                    Transform your organization&apos;s approach to equality and inclusion through our powerful Impact Mode. This comprehensive assessment and analytics platform helps you measure, understand, and enhance your organization&apos;s inclusivity metrics while providing actionable insights for improvement.
                   </p>
 
                   <div className="space-y-3">

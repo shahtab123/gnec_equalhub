@@ -17,47 +17,126 @@ import { pledgeTasks } from "@/data/quiz/pledge";
 import { microAdvocacyTasks } from "@/data/quiz/microAdvocacy";
 import { mtfQuestions } from "@/data/quiz/mtf";
 
-interface Question {
-  id: number;
+interface MCQAnswer {
+  type: 'mcq';
   question: string;
-  options: string[];
-  correctAnswer: string;
-  explanation: string;
+  answer: string | null;
+  correct: boolean;
 }
 
-interface TFQuestion {
-  id: number;
-  scenario: string;
-  statement: string;
-  isTrue: boolean;
-  explanation: string;
+interface TFAnswer {
+  type: 'tf';
+  question: string;
+  answer: boolean | null;
+  correct: boolean;
 }
 
-interface MatchingQuestion {
-  id: number;
-  fact: string;
-  statistic: string;
+interface MTFAnswer {
+  type: 'mtf';
+  question: string;
+  answer: { [key: string]: string };
+  correct: boolean;
+  correctAnswers: { [key: string]: string };
 }
 
-interface Pledge {
-  id: number;
-  title: string;
-  description: string;
-  impact: string;
+interface PledgeAnswer {
+  type: 'pledge';
+  question: string;
+  answer: string;
+  correct: boolean;
 }
 
-interface MicroAdvocacy {
-  id: number;
-  task: string;
-  impact: string;
-  resources: string[];
+interface MicroAdvocacyAnswer {
+  type: 'microAdvocacy';
+  question: string;
+  answer: string;
+  correct: boolean;
+}
+
+type Answer = MCQAnswer | TFAnswer | MTFAnswer | PledgeAnswer | MicroAdvocacyAnswer;
+
+function isMTFAnswer(answer: Answer): answer is MTFAnswer {
+  return answer.type === 'mtf';
+}
+
+function renderAnswerFeedback(answer: Answer) {
+  switch (answer.type) {
+    case 'mcq':
+      return answer.answer ? (
+        <div className="flex items-center gap-2">
+          <span>Your answer: {answer.answer}</span>
+          {answer.correct ? (
+            <CheckCircle className="w-5 h-5 text-green-500" />
+          ) : (
+            <XCircle className="w-5 h-5 text-red-500" />
+          )}
+        </div>
+      ) : null;
+    
+    case 'tf':
+      return answer.answer !== null ? (
+        <div className="flex items-center gap-2">
+          <span>Your answer: {answer.answer ? 'True' : 'False'}</span>
+          {answer.correct ? (
+            <CheckCircle className="w-5 h-5 text-green-500" />
+          ) : (
+            <XCircle className="w-5 h-5 text-red-500" />
+          )}
+        </div>
+      ) : null;
+    
+    case 'mtf':
+      return (
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <span>Your matches:</span>
+            {answer.correct ? (
+              <CheckCircle className="w-5 h-5 text-green-500" />
+            ) : (
+              <XCircle className="w-5 h-5 text-red-500" />
+            )}
+          </div>
+          {Object.entries(answer.answer).map(([key, value], index) => (
+            <div key={index} className="ml-4">
+              {key} → {value}
+            </div>
+          ))}
+          {!answer.correct && (
+            <div className="mt-2 text-sm text-foreground/70">
+              <p>Correct matches:</p>
+              {Object.entries(answer.correctAnswers).map(([key, value], index) => (
+                <div key={index} className="ml-4">
+                  {key} → {value}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    
+    case 'pledge':
+      return (
+        <div className="space-y-2">
+          <p>Your pledge:</p>
+          <p className="ml-4 text-foreground/70">{answer.answer}</p>
+        </div>
+      );
+    
+    case 'microAdvocacy':
+      return (
+        <div className="space-y-2">
+          <p>Your action plan:</p>
+          <p className="ml-4 text-foreground/70">{answer.answer}</p>
+        </div>
+      );
+  }
 }
 
 export default function QuestPage() {
   const [userName, setUserName] = useState("");
   const [currentStep, setCurrentStep] = useState(0);
   const [score, setScore] = useState(0);
-  const [answers, setAnswers] = useState<any[]>([]);
+  const [answers, setAnswers] = useState<Answer[]>([]);
   const [showResults, setShowResults] = useState(false);
 
   // State for current questions
@@ -121,6 +200,7 @@ export default function QuestPage() {
 
   const handleNextAfterMCQ = () => {
     setAnswers([...answers, { 
+      type: 'mcq',
       question: currentQuestions.mcq.question, 
       answer: selectedMCQAnswer, 
       correct: selectedMCQAnswer === currentQuestions.mcq.answer 
@@ -141,6 +221,7 @@ export default function QuestPage() {
 
   const handleNextAfterTF = () => {
     setAnswers([...answers, { 
+      type: 'tf',
       question: currentQuestions.tf.question, 
       answer: selectedTFAnswer, 
       correct: selectedTFAnswer === currentQuestions.tf.answer 
@@ -158,6 +239,8 @@ export default function QuestPage() {
   };
 
   const handleMTFSubmit = () => {
+    if (!mtfAnswers || Object.keys(mtfAnswers).length === 0) return;
+
     const correctAnswers = currentQuestions.mtf.answer.split(", ").reduce((acc: {[key: string]: string}, curr: string) => {
       const [option, match] = curr.split("-");
       acc[option] = match;
@@ -170,6 +253,7 @@ export default function QuestPage() {
     }
 
     setAnswers([...answers, {
+      type: 'mtf',
       question: currentQuestions.mtf.question,
       answer: mtfAnswers,
       correct: isCorrect,
@@ -199,10 +283,16 @@ export default function QuestPage() {
   };
 
   const handleNextAfterPledge = () => {
-    setAnswers([...answers, { question: currentQuestions.pledge.task, answer: pledgeText }]);
+    setAnswers([...answers, { 
+      type: 'pledge', 
+      question: currentQuestions.pledge.task, 
+      answer: pledgeText,
+      correct: true // Pledges are always considered correct as they're personal commitments
+    }]);
     setCurrentStep(5);
     setPledgeText("");
     setWordCount(0);
+    setShowWordLimitWarning(false);
   };
 
   const handleMicroAdvocacyInput = (text: string) => {
@@ -219,10 +309,16 @@ export default function QuestPage() {
   };
 
   const handleMicroAdvocacySubmit = () => {
-    setAnswers([...answers, { question: currentQuestions.microAdvocacy.task, answer: microAdvocacyText }]);
+    setAnswers([...answers, { 
+      type: 'microAdvocacy', 
+      question: currentQuestions.microAdvocacy.task, 
+      answer: microAdvocacyText,
+      correct: true // Micro-advocacy responses are always considered correct as they're personal actions
+    }]);
     setShowResults(true);
     setMicroAdvocacyText("");
     setMicroAdvocacyWordCount(0);
+    setShowMicroAdvocacyWarning(false);
   };
 
   const handleDownloadPDF = () => {
@@ -881,158 +977,7 @@ export default function QuestPage() {
                      'Micro-Advocacy'}
                   </div>
                   <p className="text-foreground/90 mb-4">{answer.question}</p>
-                  {currentQuestions.mcq && index === 0 ? (
-                    <div className="space-y-4">
-                      <div className="space-y-2">
-                        {currentQuestions.mcq.options.map((option: string, i: number) => (
-                          <div key={i} className={`p-3 rounded-lg ${
-                            option === answer.answer 
-                              ? 'bg-red-500/20 border-red-500/40' 
-                              : option === currentQuestions.mcq.answer
-                                ? 'bg-green-500/20 border-green-500/40'
-                                : 'bg-white/10 border-white/20'
-                          } border`}>
-                            {option}
-                            {option === answer.answer && !answer.correct && (
-                              <span className="ml-2 text-red-400">(Your Answer)</span>
-                            )}
-                            {option === currentQuestions.mcq.answer && !answer.correct && (
-                              <span className="ml-2 text-green-400">(Correct Answer)</span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="flex items-center gap-2 mt-4">
-                        {answer.correct ? (
-                          <CheckCircle className="text-green-500" />
-                        ) : (
-                          <XCircle className="text-red-500" />
-                        )}
-                        <span className={answer.correct ? "text-green-500" : "text-red-500"}>
-                          {answer.correct ? "Correct" : "Incorrect"}
-                        </span>
-                      </div>
-                      {!answer.correct && currentQuestions.mcq.explanation && (
-                        <p className="text-foreground/70 mt-2 italic">{currentQuestions.mcq.explanation}</p>
-                      )}
-                    </div>
-                  ) : currentQuestions.tf && index === 1 ? (
-                    <div className="space-y-4">
-                      <div className="flex gap-4">
-                        {[true, false].map((option) => (
-                          <div
-                            key={option.toString()}
-                            className={`flex-1 p-3 rounded-lg ${
-                              option === answer.answer 
-                                ? answer.correct
-                                  ? 'bg-green-500/20 border-green-500/40'
-                                  : 'bg-red-500/20 border-red-500/40'
-                                : option === currentQuestions.tf.answer && !answer.correct
-                                  ? 'bg-green-500/20 border-green-500/40'
-                                  : 'bg-white/10 border-white/20'
-                            } border`}
-                          >
-                            <div className="flex items-center justify-center">
-                              <span>{option ? 'True' : 'False'}</span>
-                              {option === answer.answer && !answer.correct && (
-                                <span className="ml-2 text-red-400">(Your Answer)</span>
-                              )}
-                              {option === currentQuestions.tf.answer && !answer.correct && (
-                                <span className="ml-2 text-green-400">(Correct Answer)</span>
-                              )}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {answer.correct ? (
-                          <CheckCircle className="text-green-500" />
-                        ) : (
-                          <XCircle className="text-red-500" />
-                        )}
-                        <span className={answer.correct ? "text-green-500" : "text-red-500"}>
-                          {answer.correct ? "Correct" : "Incorrect"}
-                        </span>
-                      </div>
-                      {!answer.correct && currentQuestions.tf.details && (
-                        <p className="text-foreground/70 mt-2 italic">{currentQuestions.tf.details}</p>
-                      )}
-                    </div>
-                  ) : currentQuestions.mtf && index === 2 ? (
-                    <div className="space-y-4">
-                      <div className="space-y-2">
-                        {currentQuestions.mtf.options.map((option: string, i: number) => {
-                          const optionLetter = option.charAt(0);
-                          const userMatch = answer.answer[optionLetter];
-                          const correctMatch = answer.correctAnswers[optionLetter];
-                          const isCorrect = userMatch === correctMatch;
-                          
-                          return (
-                            <div key={i} className={`p-3 rounded-lg ${
-                              isCorrect
-                                ? 'bg-green-500/20 border-green-500/40'
-                                : 'bg-red-500/20 border-red-500/40'
-                            } border`}>
-                              <div className="flex items-center justify-between">
-                                <div>
-                                  <span className="text-foreground">{option}</span>
-                                  <span className="mx-2">→</span>
-                                  <span className={isCorrect ? "text-green-400" : "text-red-400"}>
-                                    {currentQuestions.mtf.matches[parseInt(userMatch) - 1].replace(/^\d+\)/, '•')}
-                                  </span>
-                                </div>
-                                {isCorrect ? (
-                                  <CheckCircle className="w-5 h-5 text-green-400" />
-                                ) : (
-                                  <XCircle className="w-5 h-5 text-red-400" />
-                                )}
-                              </div>
-                              {!isCorrect && (
-                                <div className="mt-2 text-green-400 text-sm">
-                                  Correct match: {currentQuestions.mtf.matches[parseInt(correctMatch) - 1].replace(/^\d+\)/, '•')}
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {answer.correct ? (
-                          <CheckCircle className="text-green-500" />
-                        ) : (
-                          <XCircle className="text-red-500" />
-                        )}
-                        <span className={answer.correct ? "text-green-500" : "text-red-500"}>
-                          {answer.correct ? "All Correct" : "Some Incorrect"}
-                        </span>
-                      </div>
-                    </div>
-                  ) : (
-                    <>
-                      <p className="text-foreground/70">Your answer: {
-                        typeof answer.answer === 'object' 
-                          ? Object.entries(answer.answer)
-                              .map(([option, match]) => `${option}-${match}`)
-                              .join(", ")
-                          : answer.answer
-                      }</p>
-                      {answer.correct !== undefined && (
-                        <div className="flex items-center gap-2 mt-2">
-                          {answer.correct ? (
-                            <CheckCircle className="text-green-500" />
-                          ) : (
-                            <XCircle className="text-red-500" />
-                          )}
-                          <span className={answer.correct ? "text-green-500" : "text-red-500"}>
-                            {answer.correct ? "Correct" : "Incorrect"}
-                          </span>
-                        </div>
-                      )}
-                      {currentQuestions.tf?.details && index === 1 && (
-                        <p className="text-foreground/70 mt-2 italic">{currentQuestions.tf.details}</p>
-                      )}
-                    </>
-                  )}
+                  {renderAnswerFeedback(answer)}
                 </div>
               ))}
             </div>

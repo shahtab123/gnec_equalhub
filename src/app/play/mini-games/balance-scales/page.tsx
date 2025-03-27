@@ -9,8 +9,14 @@ import { gameRounds, GameRound } from "./game-data";
 import { CheckCircle, XCircle, ArrowRight, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+interface GameState {
+  value: number;
+  target: number;
+  score: number;
+  isComplete: boolean;
+}
+
 // Types
-type GameState = "welcome" | "playing" | "feedback" | "complete";
 type Scale = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10; // 0 = far left, 5 = balanced, 10 = far right
 
 interface Round {
@@ -28,12 +34,14 @@ interface Round {
 
 export default function BalanceScalesGame() {
   // Game state
-  const [gameState, setGameState] = useState<GameState>("welcome");
+  const [gameState, setGameState] = useState<GameState>({
+    value: 5,
+    target: 5,
+    score: 0,
+    isComplete: false
+  });
   const [playerName, setPlayerName] = useState<string>("");
   const [currentRoundIndex, setCurrentRoundIndex] = useState<number>(0);
-  const [score, setScore] = useState<number>(0);
-  const [currentScale, setCurrentScale] = useState<number>(5);
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [streak, setStreak] = useState<number>(0);
 
   // Current round data
@@ -41,46 +49,70 @@ export default function BalanceScalesGame() {
 
   // Initialize round
   useEffect(() => {
-    if (gameState === "playing" && currentRound) {
-      setCurrentScale(currentRound.initialScale);
-      setSelectedOption(null);
+    if (gameState.isComplete && currentRound) {
+      setGameState({
+        value: currentRound.initialScale,
+        target: 5,
+        score: gameState.score,
+        isComplete: false
+      });
+      setStreak(0);
     }
-  }, [currentRoundIndex, gameState]);
+  }, [currentRoundIndex, gameState.isComplete]);
 
   // Handle option selection
   const handleOptionSelect = (optionId: number) => {
     const option = currentRound.options.find(opt => opt.id === optionId);
     if (!option) return;
 
-    setSelectedOption(optionId);
-    
     // Calculate new scale value
-    const newScale = Math.max(0, Math.min(10, currentScale + option.impact));
-    setCurrentScale(newScale);
+    const newScale = Math.max(0, Math.min(10, gameState.value + option.impact));
+    setGameState({
+      value: newScale,
+      target: 5,
+      score: gameState.score + (newScale === 5 ? 10 : 0),
+      isComplete: newScale === 5
+    });
 
-    // Check if balanced (value 5)
-    const isBalanced = newScale === 5;
-    
-    if (isBalanced) {
-      setScore(score + 10);
+    if (newScale === 5) {
       setStreak(streak + 1);
       if (streak === 2) {
-        setScore(score + 5); // Bonus for 3 in a row
+        setGameState({
+          value: newScale,
+          target: 5,
+          score: gameState.score + 5,
+          isComplete: true
+        });
       }
     } else {
       setStreak(0);
     }
 
-    setGameState("feedback");
+    setGameState({
+      value: newScale,
+      target: 5,
+      score: gameState.score + (newScale === 5 ? 10 : 0),
+      isComplete: newScale === 5
+    });
   };
 
   // Handle next round
   const handleNextRound = () => {
     if (currentRoundIndex < gameRounds.length - 1) {
       setCurrentRoundIndex(currentRoundIndex + 1);
-      setGameState("playing");
+      setGameState({
+        value: gameRounds[currentRoundIndex + 1].initialScale,
+        target: 5,
+        score: gameState.score,
+        isComplete: false
+      });
     } else {
-      setGameState("complete");
+      setGameState({
+        value: 5,
+        target: 5,
+        score: gameState.score,
+        isComplete: true
+      });
     }
   };
 
@@ -108,7 +140,7 @@ export default function BalanceScalesGame() {
           </p>
 
           {/* Welcome Screen */}
-          {gameState === "welcome" && (
+          {!gameState.isComplete && (
             <div className="space-y-6">
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
                 <h2 className="text-2xl font-semibold text-foreground mb-4">Welcome!</h2>
@@ -126,7 +158,12 @@ export default function BalanceScalesGame() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => setGameState("playing")}
+                    onClick={() => setGameState({
+                      value: 5,
+                      target: 5,
+                      score: 0,
+                      isComplete: false
+                    })}
                     className="px-6 py-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 hover:from-red-500/30 hover:to-orange-500/30 border border-white/10 rounded-lg text-foreground font-medium transition-all duration-300 hover:border-red-500/50"
                   >
                     Start Game
@@ -160,13 +197,13 @@ export default function BalanceScalesGame() {
           )}
 
           {/* Game Screen */}
-          {gameState === "playing" && currentRound && (
+          {!gameState.isComplete && currentRound && (
             <div className="space-y-8">
               {/* Score and Progress */}
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <p className="text-sm text-foreground/70">Round {currentRoundIndex + 1} of {gameRounds.length}</p>
-                  <p className="text-lg font-medium text-foreground">Score: {score}</p>
+                  <p className="text-lg font-medium text-foreground">Score: {gameState.score}</p>
                 </div>
                 {streak > 0 && (
                   <div className="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">
@@ -183,7 +220,7 @@ export default function BalanceScalesGame() {
 
               {/* Scale Visualization */}
               <div className="flex justify-center py-8">
-                <Scale value={currentScale} size="lg" />
+                <Scale value={gameState.value} size="lg" />
               </div>
 
               {/* Options */}
@@ -204,9 +241,8 @@ export default function BalanceScalesGame() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => handleOptionSelect(option.id)}
-                            disabled={selectedOption !== null}
                             className={`w-full p-4 text-left rounded-lg border transition-all duration-300 ${
-                              selectedOption === option.id
+                              gameState.value === option.id
                                 ? "bg-red-500/20 border-red-500/50"
                                 : "bg-white/5 border-white/10 hover:bg-white/10"
                             }`}
@@ -223,60 +259,7 @@ export default function BalanceScalesGame() {
           )}
 
           {/* Feedback Screen */}
-          {gameState === "feedback" && currentRound && selectedOption && (
-            <div className="space-y-8">
-              {/* Scale Visualization */}
-              <div className="flex justify-center py-8">
-                <Scale value={currentScale} size="lg" />
-              </div>
-
-              {/* Feedback Message */}
-              <div className={`p-6 rounded-lg ${
-                currentScale === 5
-                  ? "bg-green-500/20 border-green-500/40"
-                  : "bg-red-500/20 border-red-500/40"
-              } border`}>
-                <div className="flex items-center gap-3 mb-4">
-                  {currentScale === 5 ? (
-                    <span role="img" aria-label="success">✅</span>
-                  ) : (
-                    <span role="img" aria-label="try again">❌</span>
-                  )}
-                  <h3 className="text-xl font-semibold text-foreground">
-                    {currentScale === 5 ? "Perfect Balance! 🎉" : "Not Quite Balanced 🤔"}
-                  </h3>
-                </div>
-                <p className="text-foreground/80">
-                  {currentRound.options.find(opt => opt.id === selectedOption)?.feedback}
-                </p>
-              </div>
-
-              {/* Next Button */}
-              <div className="flex justify-end">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={handleNextRound}
-                  className="px-6 py-3 bg-gradient-to-r from-red-500/20 to-orange-500/20 hover:from-red-500/30 hover:to-orange-500/30 border border-white/10 rounded-lg text-foreground font-medium transition-all duration-300 hover:border-red-500/50 flex items-center gap-2"
-                >
-                  {currentRoundIndex < gameRounds.length - 1 ? (
-                    <>
-                      Next Round
-                      <ArrowRight className="w-5 h-5" />
-                    </>
-                  ) : (
-                    <>
-                      Complete Game
-                      <Trophy className="w-5 h-5" />
-                    </>
-                  )}
-                </motion.button>
-              </div>
-            </div>
-          )}
-
-          {/* Complete Screen */}
-          {gameState === "complete" && (
+          {gameState.isComplete && (
             <div className="space-y-8 text-center">
               <div className="flex justify-center">
                 <div className="p-4 rounded-full bg-yellow-500/20 border border-yellow-500/30">
@@ -292,9 +275,9 @@ export default function BalanceScalesGame() {
                   You've completed the Balance the Scales challenge
                 </p>
                 <p className="text-2xl font-semibold text-red-400">
-                  Final Score: {score}
+                  Final Score: {gameState.score}
                 </p>
-                {score >= 45 && (
+                {gameState.score >= 45 && (
                   <div className="inline-block px-4 py-2 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">
                     Balance Master Achieved!
                   </div>
@@ -306,10 +289,13 @@ export default function BalanceScalesGame() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
-                    setGameState("welcome");
+                    setGameState({
+                      value: 5,
+                      target: 5,
+                      score: 0,
+                      isComplete: false
+                    });
                     setCurrentRoundIndex(0);
-                    setScore(0);
-                    setStreak(0);
                   }}
                   className="px-6 py-3 bg-gradient-to-r from-red-500/20 to-orange-500/20 hover:from-red-500/30 hover:to-orange-500/30 border border-white/10 rounded-lg text-foreground font-medium transition-all duration-300 hover:border-red-500/50"
                 >

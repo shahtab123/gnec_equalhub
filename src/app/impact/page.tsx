@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Download, Users, UserCheck, Building2, Award, ChevronRight, FileCheck, Heart, Clock, Target, Plus } from "lucide-react";
+import { Download, Users, UserCheck, Building2, ChevronRight, Clock, Target, Plus } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { GridBackground } from "@/components/ui/grid-background";
 
