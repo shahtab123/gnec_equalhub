@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { GridBackground } from "@/components/ui/grid-background";
 import { Navbar } from "@/components/Navbar";
-import { Globe, Users, Target, Award, BookOpen, Gamepad2, ChartBar, Heart } from "lucide-react";
+import { Users, Target, Award, BookOpen, Gamepad2, ChartBar, Heart } from "lucide-react";
 
 export default function AboutPage() {
   return (

@@ -8,6 +8,7 @@ import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { Navbar } from "@/components/Navbar";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { Button } from "@/components/ui/button";
 
 // Import quiz data
 import { mcqQuestions } from "@/data/quiz/mcq";
@@ -15,6 +16,42 @@ import { tfQuestions } from "@/data/quiz/tf";
 import { pledgeTasks } from "@/data/quiz/pledge";
 import { microAdvocacyTasks } from "@/data/quiz/microAdvocacy";
 import { mtfQuestions } from "@/data/quiz/mtf";
+
+interface Question {
+  id: number;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  explanation: string;
+}
+
+interface TFQuestion {
+  id: number;
+  scenario: string;
+  statement: string;
+  isTrue: boolean;
+  explanation: string;
+}
+
+interface MatchingQuestion {
+  id: number;
+  fact: string;
+  statistic: string;
+}
+
+interface Pledge {
+  id: number;
+  title: string;
+  description: string;
+  impact: string;
+}
+
+interface MicroAdvocacy {
+  id: number;
+  task: string;
+  impact: string;
+  resources: string[];
+}
 
 export default function QuestPage() {
   const [userName, setUserName] = useState("");

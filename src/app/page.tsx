@@ -5,13 +5,11 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import { Sun, Moon } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
+import Image from "next/image";
 
 export default function Home() {
   const ref = useRef<HTMLDivElement>(null);
-  const { theme, setTheme } = useTheme();
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -187,28 +185,36 @@ export default function Home() {
                     {/* Image Section */}
                     <div className="relative h-64 overflow-hidden">
                       {mode.title === "Quest Mode" ? (
-                        <img 
+                        <Image 
                           src="https://unsplash.com/photos/BrcwCWqIWpo/download?force=true"
                           alt="Quest Mode"
                           className="w-full h-full object-cover object-[center_75%]"
+                          width={800}
+                          height={600}
                         />
                       ) : mode.title === "Play Mode" ? (
-                        <img 
+                        <Image 
                           src="https://unsplash.com/photos/zA66MV4EyXc/download?force=true"
                           alt="Play Mode"
                           className="w-full h-full object-cover object-[center_35%]"
+                          width={800}
+                          height={600}
                         />
                       ) : mode.title === "Skill Mode" ? (
-                        <img 
+                        <Image 
                           src="https://unsplash.com/photos/2qgTDqwZQFg/download?force=true"
                           alt="Skill Mode"
                           className="w-full h-full object-cover object-[center_35%]"
+                          width={800}
+                          height={600}
                         />
                       ) : mode.title === "Impact Mode" ? (
-                        <img 
+                        <Image 
                           src="https://unsplash.com/photos/9yuMtjAMMrI/download?force=true"
                           alt="Impact Mode"
                           className="w-full h-full object-cover object-[center_75%]"
+                          width={800}
+                          height={600}
                         />
                       ) : (
                         /* Dynamic gradient background */

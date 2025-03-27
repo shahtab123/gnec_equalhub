@@ -7,6 +7,7 @@ import { Navbar } from "@/components/Navbar";
 import { Scale } from "./components/Scale";
 import { gameRounds, GameRound } from "./game-data";
 import { CheckCircle, XCircle, ArrowRight, Trophy } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // Types
 type GameState = "welcome" | "playing" | "feedback" | "complete";
