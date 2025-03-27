@@ -9,7 +9,6 @@ import { samplePosts, Chapter, SkillPost } from "./data";
 type SearchParams = { id: string };
 
 interface CourseProps {
-  params: {};
   searchParams: SearchParams;
 }
 
