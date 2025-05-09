@@ -8,11 +8,13 @@ EqualHub serves as a bridge between technology and social impact, offering innov
 
 ## Screenshots
 
+<center>
 <img src="public/Screenshot%202025-05-09%20213041.png" alt="EqualHub Homepage" width="600" />
 
 ---
 
 <img src="public/Screenshot%202025-05-09%20213118.png" alt="EqualHub About Page" width="600" />
+</center>
 
 ### Key Features
 
