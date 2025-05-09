@@ -68,6 +68,123 @@ export default function AboutPage() {
             </div>
           </section>
 
+          {/* Meet the Team Section */}
+          <section className="relative backdrop-blur-md bg-transparent rounded-xl p-8 border border-gray-200 dark:border-white/10">
+            <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Meet the Team</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+              {/* Shahtab's Card */}
+              <div className="group">
+                <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-red-400/10 rounded-2xl p-8 border border-red-200/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <div className="absolute inset-0 bg-white/40 rounded-2xl"></div>
+                  <div className="relative flex flex-col items-center">
+                    <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-2 ring-red-200/30 ring-offset-2 ring-offset-white/10">
+                      <img 
+                        src="/shahtab.webp" 
+                        alt="Shahtab Mohtasin"
+                        className="w-full h-full object-cover object-[center_16%]"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-1">Shahtab Mohtasin</h3>
+                    <p className="text-sm text-foreground/70 mb-4 font-medium">Lead Developer</p>
+                    
+                    <div className="flex gap-3 mb-6">
+                      <a 
+                        href="https://www.linkedin.com/in/shahtab-mohtasin/" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 backdrop-blur-lg bg-white/30 rounded-full hover:bg-white/50 transition-colors"
+                      >
+                        <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                      </a>
+                      <a 
+                        href="https://devpost.com/smohtasin" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 backdrop-blur-lg bg-white/30 rounded-full hover:bg-white/50 transition-colors"
+                      >
+                        <svg className="w-5 h-5 text-foreground/70" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c0-2.311-1.216-3.853-3.862-3.853z"/>
+                        </svg>
+                      </a>
+                    </div>
+
+                    <div className="space-y-4 text-center">
+                      <p className="text-foreground/70 text-sm italic">
+                        "Master's graduate in IT Management, AI enthusiast, and tech innovator."
+                      </p>
+                      <div className="pt-4 border-t border-red-200/20">
+                        <p className="font-semibold text-foreground mb-2">Contribution to EqualHub:</p>
+                        <div className="text-sm text-foreground/70 space-y-1">
+                          <p>• Led full-stack development</p>
+                          <p>• Designed UI/UX architecture</p>
+                          <p>• Implemented core features</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Prionti's Card */}
+              <div className="group">
+                <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-red-400/10 rounded-2xl p-8 border border-red-200/20 shadow-xl transition-all duration-300">
+                  <div className="absolute inset-0 bg-white/40 rounded-2xl"></div>
+                  <div className="relative flex flex-col items-center">
+                    <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-2 ring-red-200/30 ring-offset-2 ring-offset-white/10">
+                      <img 
+                        src="/prionti.jpg" 
+                        alt="Prionti Maliha"
+                        className="w-full h-full object-cover object-[center_16%]"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-1">Prionti Maliha</h3>
+                    <p className="text-sm text-foreground/70 mb-4 font-medium">Developer</p>
+                    
+                    <div className="flex gap-3 mb-6">
+                      <a 
+                        href="https://www.linkedin.com/in/priontimaliha/" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 backdrop-blur-lg bg-white/30 rounded-full hover:bg-white/50 transition-colors"
+                      >
+                        <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                      </a>
+                      <a 
+                        href="https://devpost.com/priontimaliha333" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 backdrop-blur-lg bg-white/30 rounded-full hover:bg-white/50 transition-colors"
+                      >
+                        <svg className="w-5 h-5 text-foreground/70" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c0-2.311-1.216-3.853-3.862-3.853z"/>
+                        </svg>
+                      </a>
+                    </div>
+
+                    <div className="space-y-4 text-center">
+                      <p className="text-foreground/70 text-sm italic">
+                        "Currently pursuing a degree in software engineering and a diploma in cybersecurity"
+                      </p>
+                      <div className="pt-4 border-t border-red-200/20">
+                        <p className="font-semibold text-foreground mb-2">Contribution to EqualHub:</p>
+                        <div className="text-sm text-foreground/70 space-y-1">
+                          <p>• Frontend Development</p>
+                          <p>• UI/UX Implementation</p>
+                          <p>• Feature Development</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Features Section */}
           <section className="space-y-8">
             <h2 className="text-2xl font-semibold text-foreground">Our Features</h2>
@@ -414,7 +531,7 @@ export default function AboutPage() {
           <section className="relative backdrop-blur-md bg-transparent rounded-xl p-8 border border-gray-200 dark:border-white/10">
             <h2 className="text-2xl font-semibold text-foreground mb-6">Future Plans</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {/* Red */}
               <div className="space-y-4 bg-gradient-to-br from-red-500/5 via-pink-500/5 to-red-500/5 rounded-xl p-6 border border-red-500/10 hover:border-red-500/20 transition-colors">
                 <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
@@ -572,102 +689,6 @@ export default function AboutPage() {
             <p className="text-foreground/80 italic mt-6">
               Note: We are focusing on implementing these core features effectively before expanding to more advanced functionality. Our goal is to provide a stable, user-friendly platform that delivers real value to our users.
             </p>
-          </section>
-
-          {/* Meet the Team Section */}
-          <section className="relative backdrop-blur-md bg-transparent rounded-xl p-8 border border-gray-200 dark:border-white/10">
-            <h2 className="text-2xl font-semibold text-foreground mb-6">Meet the Team</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Shahtab's Card */}
-              <div className="group">
-                <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-red-400/10 rounded-2xl p-8 border border-red-200/20 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <div className="absolute inset-0 bg-white/40 rounded-2xl"></div>
-                  <div className="relative flex flex-col items-center">
-                    <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-2 ring-red-200/30 ring-offset-2 ring-offset-white/10">
-                      <img 
-                        src="https://avatars.githubusercontent.com/u/35170216" 
-                        alt="Shahtab Mohtasin"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-1">Shahtab Mohtasin</h3>
-                    <p className="text-sm text-foreground/70 mb-4 font-medium">Lead Developer</p>
-                    
-                    <div className="flex gap-3 mb-6">
-                      <a 
-                        href="https://www.linkedin.com/in/shahtab-mohtasin/" 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 backdrop-blur-lg bg-white/30 rounded-full hover:bg-white/50 transition-colors"
-                      >
-                        <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                      </a>
-                      <a 
-                        href="https://devpost.com/smohtasin" 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 backdrop-blur-lg bg-white/30 rounded-full hover:bg-white/50 transition-colors"
-                      >
-                        <svg className="w-5 h-5 text-foreground/70" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c0-2.311-1.216-3.853-3.862-3.853z"/>
-                        </svg>
-                      </a>
-                    </div>
-
-                    <div className="space-y-4 text-center">
-                      <p className="text-foreground/70 text-sm italic">
-                        "Master's graduate in IT Management, AI enthusiast, and tech innovator."
-                      </p>
-                      <div className="pt-4 border-t border-red-200/20">
-                        <p className="font-semibold text-foreground mb-2">Contribution to EqualHub:</p>
-                        <div className="text-sm text-foreground/70 space-y-1">
-                          <p>• Led full-stack development</p>
-                          <p>• Designed UI/UX architecture</p>
-                          <p>• Implemented core features</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Future Member 1 */}
-              <div className="group">
-                <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-red-400/10 rounded-2xl p-8 border border-red-200/20 shadow-xl transition-all duration-300">
-                  <div className="absolute inset-0 bg-white/40 rounded-2xl"></div>
-                  <div className="relative flex flex-col items-center">
-                    <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-2 ring-red-200/30 ring-offset-2 ring-offset-white/10 bg-gradient-to-br from-red-100 to-white/80 flex items-center justify-center">
-                      <span className="text-4xl text-red-300">?</span>
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-1">Coming Soon</h3>
-                    <p className="text-sm text-foreground/70 mb-6 font-medium">Future Team Member</p>
-                    <p className="text-foreground/70 text-sm text-center">
-                      Position open for a passionate developer interested in social impact through technology
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Future Member 2 */}
-              <div className="group">
-                <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-red-400/10 rounded-2xl p-8 border border-red-200/20 shadow-xl transition-all duration-300">
-                  <div className="absolute inset-0 bg-white/40 rounded-2xl"></div>
-                  <div className="relative flex flex-col items-center">
-                    <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-2 ring-red-200/30 ring-offset-2 ring-offset-white/10 bg-gradient-to-br from-red-100 to-white/80 flex items-center justify-center">
-                      <span className="text-4xl text-red-300">?</span>
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-1">Coming Soon</h3>
-                    <p className="text-sm text-foreground/70 mb-6 font-medium">Future Team Member</p>
-                    <p className="text-foreground/70 text-sm text-center">
-                      Position open for an equality advocate with technical expertise
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </section>
         </div>
       </div>

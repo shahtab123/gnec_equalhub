@@ -6,6 +6,11 @@ A comprehensive platform developed for the GNEC Hackathon, focusing on SDG 5 (Ge
 
 EqualHub serves as a bridge between technology and social impact, offering innovative solutions for promoting equality and inclusion. Through our four distinct modes, we provide comprehensive tools and resources aligned with UN Sustainable Development Goals 5 and 10, empowering users to learn, engage, and make a real difference in their communities.
 
+## Screenshots
+
+![EqualHub Homepage](public/Screenshot%202025-05-09%20213041.png)
+![EqualHub About Page](public/Screenshot%202025-05-09%20213118.png)
+
 ### Key Features
 
 - **Quest Mode**: Test your knowledge through an engaging five-part challenge
