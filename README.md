@@ -112,9 +112,7 @@ yarn start
 ## Developer
 
 **Shahtab Mohtasin**
-- Lead Developer
-- [LinkedIn](https://www.linkedin.com/in/shahtab-mohtasin/)
-- [DevPost](https://devpost.com/smohtasin)
+**Prionti Maliha**
 
 ## Contributing
 
